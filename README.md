@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A basic tool for viewing theta tau apps. Apps should be saved as a CSV to lib/apps.json and must be formatted correctly for this to work. Made in < 20 hour so please dont judge <3 
+
 
 ## Getting Started
 
