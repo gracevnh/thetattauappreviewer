@@ -3,17 +3,15 @@
   padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background-color: #121212;
+  color: #efefef;
 }
 
 .main {
-  padding: 5rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 75%;
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 80px;
 }
 
 .footer {
@@ -119,4 +117,26 @@
     width: 100%;
     flex-direction: column;
   }
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: .5fr 1fr;
+  grid-template-rows: .01fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "header header"
+    "notes app";
+}
+
+.header { grid-area: header; }
+.notes { grid-area: notes; }
+.app { grid-area: app; }
+
+.info {
+  font-weight: 800;
+}
+
+.notesSticky {
+  position: sticky;
+  top: 1rem;
 }

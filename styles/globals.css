@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+  }
 
 a {
   color: inherit;
@@ -13,4 +13,25 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3 {
+  color: #457397;
+}
+
+button {
+  color: white; 
+  background: #457397;
+  width: 80px;
+  height: 30px; 
+  font-size: 1em;
+  cursor: pointer;
+  border: 0.1em solid #457397;
+  transition: .4s;
+}
+
+button:hover {
+  background: darkslateblue;
 }
