@@ -1,4 +1,4 @@
-A basic tool for viewing theta tau apps. Apps should be saved as a CSV to lib/apps.json and must be formatted correctly for this to work. Made in ~4 hours so please dont judge <3 
+A basic tool for viewing theta tau apps. Apps should be saved as a CSV to lib/apps.json and must be formatted correctly for this to work. Made in ~4 hours so please dont judge
 
 
 ## Getting Started
