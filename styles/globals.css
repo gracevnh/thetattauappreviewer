@@ -1,3 +1,17 @@
+:root {
+  --background: #121212;
+  --foreground: #efefef;
+  --heading: #457397;
+  --hover: darkslateblue;
+}
+
+[data-theme='light'] {
+  --background: #efefef;
+  --foreground: #121212;
+  --heading: #457397;
+  --hover: darkslateblue;
+}
+
 html,
 body {
   padding: 0;
@@ -18,20 +32,20 @@ a {
 h1,
 h2,
 h3 {
-  color: #457397;
+  color: var(--heading);
 }
 
 button {
   color: white; 
-  background: #457397;
+  background: var(--heading);
   width: 80px;
   height: 30px; 
   font-size: 1em;
   cursor: pointer;
-  border: 0.1em solid #457397;
+  border: 0.1em solid var(--heading);
   transition: .4s;
 }
 
 button:hover {
-  background: darkslateblue;
+  background: var(--hover);
 }

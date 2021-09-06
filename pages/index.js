@@ -2,16 +2,14 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { useState, useEffect } from 'react';
 import Select from 'react-select'
-
-
-
+import { useTheme } from 'next-themes'
 export default function Home({ apps }) {
   apps = JSON.parse(apps);
 
   const [currApp, setApp] = useLocalStorage('currApp', 0);
-  const [note, setNote] = useLocalStorage(`note-${currApp}`, '');
+  const [note, setNote] = useLocalStorage(`note-${currApp}-2021`, '');
   const [selectedOption, setSelectedOption] = useState('');
-
+  const { theme, setTheme } = useTheme()
 
   const options = [];
   Object.keys(apps).forEach((e, i) => {
@@ -117,6 +115,13 @@ export default function Home({ apps }) {
       <main className={styles.main}>
         <span className={styles['grid-container']}>
           <div className={styles.header}>
+          <div>Theme: {theme !== undefined && (
+              <select value={theme} onChange={e => setTheme(e.target.value)}>
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+                <option value="system">System</option>
+              </select>
+            )}</div>
             <h1 style={{display: 'inline-block', marginRight: 110}}>Theta Tau App Review</h1> 
             <span style={{width: 250, display: 'inline-block'}}><Select 
             value={selectedOption}
@@ -135,7 +140,7 @@ export default function Home({ apps }) {
             </span>
           </div>
           <main className={styles.apps}>
-            {currApp === 0 && <p style={{background: 'blue', borderRadius: 8, padding: 8}}>PLEASE READ: notes are per-application, stored locally, and can be exported for easy viewing at delibs. please dont share this site.</p>}
+            {currApp === 0 && <p style={{background: 'blue', borderRadius: 8, padding: 8}}>PLEASE READ: notes are per-application, stored locally, and can be exported for easy viewing at delibs. please dont share this site. the source code is <u><a href="https://github.com/maxLeiter/thetattauappreviewer">here</a></u>.</p>}
             {currApp !== 0 && <h2>{app['First Name']} {app['Last Name']} - app {currApp} of {Object.keys(apps).length - 2}</h2>}
             {currApp === 0 && <h2>{app['First Name']} {app['Last Name']} - app <abbr title="This is CS, we start at 0. Sorry for being lazy">{currApp}</abbr> of {Object.keys(apps).length - 2}</h2>}
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
@@ -148,6 +153,7 @@ export default function Home({ apps }) {
             </div>
             <h3>Info</h3>
             <p style={{display: 'flex', flexDirection: 'column'}}> 
+              <span><span className={styles.info}>Pronouns:</span> <span>{app['Pronouns']}</span></span>
               <span><span className={styles.info}>Class Standing:</span> <span>{app['Class Standing']}</span></span>
               <span><span className={styles.info}>Major:</span> <span>{app['Declared Major']} {app['What is your second major?']}</span></span>
               {app['Do you have a minor?'] === "Yes" && <span><span className={styles.info}>Minor(s):</span> <span>{app['What is your minor(s)?']} </span></span>}
@@ -159,12 +165,12 @@ export default function Home({ apps }) {
             <QA q="Which rush events did you attend (or which will you attend)?"/>
             <QA q="Why do you want to join Theta Tau? (100 Words)"/>
             <QA q="The three pillars of Theta Tau are Service, Profession, and Brotherhood. If you could plan one event for the organization related to one (or more) of these principles, what would it be? Briefly describe your event. (200 Words)" />
-            <QA q="Which of the three pillars (Service, Professionalism, or Brotherhood) do you feel is the most important to you? In other words, what aspect of the fraternity do you hope to get the most out of? (200 Words)" />
-            <QA q="Describe yourself in three HOUSEHOLD OBJECTS. (without explaining why)" />
-            <QA q="What fictional character do you feel best represents you and why? (100 Words)" />
-            <QA q="You're stranded on an island and while you aren't trying to escape, you are extremely bored. You stumble upon a metal fishing box with pliers, a calculator, a toothpick, a nail file, a single strike-anywhere match, 3 pipe cleaners (like the ones from grade school), an apple, a penny, a 9V battery, an iPhone charging wire, a retro mouse (the ones with a ball on the inside), a house key, and tweezers. Describe what you would use to keep yourself entertained. Remember you've been stranded on this island for a day and know your way around pretty well. Feel free to use your natural resources to help with your creation. (250 Words)" />
+            <QA q="Which of the three pillars (Service, Professionalism, or Social) do you feel is the most important to you? In other words, what aspect of the Organization do you hope to get the most out of? (200 Words)" />
+            <QA q="What THREE books/movies/TV shows describe you most accurately (without explaining why they describe you)." />
+            <QA q="What fictional character do you feel best represents you AND why? (100 Words)" />
+            <QA q="You are traveling out west when suddenly you wake up stranded in the middle of a cornfield in Kansas. You recognize the area (you travel a lot) and remember that the closest civilization is 200 miles away, but you are nearly out of food and water. On top of that, your horse has gone missing. You stumble into a random junkyard where you collect a single strike-anywhere match, a pair of snowshoes, a mug, a parachute, a soccer ball, tweezers, an apple, a swiss army knife, two pieces of scrap wood, a mirror, and a lasso. You know that in 10 days farmers will come tend the area you are in, which means you must keep yourself alive and entertained for that amount of time. Describe which materials you would use to survive this situation. Feel free to use natural resources to help with your creations (250 Words)." />
             {app["Optional: Upload a photo of your creation if you feel words can't do it justice."] && <a href={app["Optional: Upload a photo of your creation if you feel words can't do it justice."]} rel="noreferrer" target="_blank"><button style={{width: 300}}>Open image of creation</button></a>}
-            <QA q="What are you most looking forward to this upcoming semester? (100 Words)" />
+            <QA q="What are you most looking forward to this upcoming school year? (100 Words)" />
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
               <button onClick={prevApp}>
                 &#171; Prev
