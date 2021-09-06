@@ -140,9 +140,9 @@ export default function Home({ apps }) {
             </span>
           </div>
           <main className={styles.apps}>
-            {currApp === 0 && <p style={{background: 'blue', borderRadius: 8, padding: 8}}>PLEASE READ: notes are per-application, stored locally, and can be exported for easy viewing at delibs. please dont share this site. the source code is <u><a href="https://github.com/maxLeiter/thetattauappreviewer">here</a></u>.</p>}
+            {currApp === 0 && <p style={{background: 'var(--warning)', borderRadius: 8, padding: 8}}>PLEASE READ: notes are per-application, stored locally, and can be exported for easy viewing at delibs. please dont share this site. the source code is <u><a href="https://github.com/maxLeiter/thetattauappreviewer">here</a></u>.</p>}
             {currApp !== 0 && <h2>{app['First Name']} {app['Last Name']} - app {currApp} of {Object.keys(apps).length - 2}</h2>}
-            {currApp === 0 && <h2>{app['First Name']} {app['Last Name']} - app <abbr title="This is CS, we start at 0. Sorry for being lazy">{currApp}</abbr> of {Object.keys(apps).length - 2}</h2>}
+            {currApp === 0 && <h2>{app['First Name']} {app['Last Name']} - app <abbr title="This is CS, we start at 0. Sorry for being lazy">{currApp}</abbr> of {Object.keys(apps).length - 3}</h2>}
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
               <button onClick={prevApp}>
                 &#171; Prev

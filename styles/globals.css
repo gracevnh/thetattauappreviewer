@@ -3,6 +3,7 @@
   --foreground: #efefef;
   --heading: #457397;
   --hover: darkslateblue;
+  --warning: blue;
 }
 
 [data-theme='light'] {
@@ -10,6 +11,7 @@
   --foreground: #121212;
   --heading: #457397;
   --hover: darkslateblue;
+  --warning: black;
 }
 
 html,
