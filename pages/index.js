@@ -37,7 +37,7 @@ export default function Home({ apps }) {
   }
 
   const nextApp = () => {
-    if (currApp === Object.keys(apps).length - 2) {
+    if (currApp === justApps.length) {
       return
     }
     localStorage.setItem('currApp', currApp + 1);
@@ -69,7 +69,7 @@ export default function Home({ apps }) {
   const exportNotes = () => {
     const list = []
     list.push(["Name", "Note"]);
-    for (let i = 0; i < Object.keys(apps).length - 2; i++) {
+    for (let i = 0; i < justApps.length; i++) {
       const note = localStorage.getItem(`note-${i}`);
   
       if (note) {
@@ -107,6 +107,8 @@ export default function Home({ apps }) {
     
   }
 
+  const justApps = Object.entries(apps).filter(([_, app]) => app["First Name"] !== undefined);
+  const displayLength = justApps.length - 1; // because we index at 0.
   return (
     <div className={styles.container}>
       <Head>
@@ -142,8 +144,8 @@ export default function Home({ apps }) {
           </div>
           <main className={styles.apps}>
             {currApp === 0 && <p style={{background: 'var(--warning)', color: 'white', borderRadius: 8, padding: 8}}>PLEASE READ: notes are per-application, stored locally, and can be exported for easy viewing at delibs. please dont share this site. the source code is <u><a href="https://github.com/maxLeiter/thetattauappreviewer">here</a></u>.</p>}
-            {currApp !== 0 && <h2>{app['First Name']} {app['Last Name']} - app {currApp} of {Object.keys(apps).length - 2}</h2>}
-            {currApp === 0 && <h2>{app['First Name']} {app['Last Name']} - app <abbr title="This is CS, we start at 0. Sorry for being lazy">{currApp}</abbr> of {Object.keys(apps).length - 3}</h2>}
+            {currApp !== 0 && <h2>{app['First Name']} {app['Last Name']} - app {currApp} of {displayLength}</h2>}
+            {currApp === 0 && <h2>{app['First Name']} {app['Last Name']} - app <abbr title="This is CS, we start at 0. Sorry for being lazy">{currApp}</abbr> of {displayLength}</h2>}
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
               <button onClick={prevApp}>
                 &#171; Prev
