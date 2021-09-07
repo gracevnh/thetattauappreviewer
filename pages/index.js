@@ -7,7 +7,8 @@ export default function Home({ apps }) {
   apps = JSON.parse(apps);
 
   const [currApp, setApp] = useLocalStorage('currApp', 0);
-  const [note, setNote] = useLocalStorage(`note-${currApp}-2021`, '');
+  const year = new Date().getFullYear();
+  const [note, setNote] = useLocalStorage(`note-${currApp}-${year}`, '');
   const [selectedOption, setSelectedOption] = useState('');
   const { theme, setTheme } = useTheme()
 
