@@ -1,4 +1,4 @@
-A basic tool for viewing theta tau apps. Apps should be saved as a CSV and converted to JSOJ and saved as lib/apps.json. Made in ~4 hours so please dont judge.
+A basic tool for viewing theta tau apps.  Made in ~4 hours so please dont judge.
 
 
 ## Getting Started
@@ -17,3 +17,5 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.js`.
+
+If the questions change, just find the `<QA>` element in `index` and change the text to match _exactly_
