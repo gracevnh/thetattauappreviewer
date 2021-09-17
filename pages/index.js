@@ -3,9 +3,41 @@ import styles from '../styles/Home.module.css'
 import { useState, useEffect } from 'react';
 import Select from 'react-select'
 import { useTheme } from 'next-themes'
+
+export async function getStaticProps(context) {
+  try {
+    const apps = await require('../lib/apps.json')
+
+    if (process.env.ACTIVE !== true) {
+      return { props: { apps: JSON.stringify([]) } }
+    }
+  
+    const array = []
+    Object.entries(apps).forEach(([key, value]) => {
+      // If we successfully parse, we assume its a valid app.
+        const num = parseInt(key)
+        if (!isNaN(num))
+          array.push(value)
+    })
+  
+    return {
+      props: { apps: JSON.stringify(array) },
+    }
+  } catch  (e) {
+    // If no apps.json file is found
+    if (e?.code === 'MODULE_NOT_FOUND') {
+      return {
+        props: { apps: JSON.stringify([]) },
+      }
+    } else {
+      throw e;
+    }
+  }
+ 
+}
+
 export default function Home({ apps }) {
   apps = JSON.parse(apps);
-
   const [currApp, setApp] = useLocalStorage('currApp', 0);
   const year = new Date().getFullYear();
   const [note, setNote] = useLocalStorage(`note-${currApp}-${year}`, '');
@@ -13,6 +45,13 @@ export default function Home({ apps }) {
   const { theme, setTheme } = useTheme()
 
   const options = [];
+
+  const app = apps[currApp]
+
+  if (!app) {
+    return <>nice try</>
+  }
+
   Object.keys(apps).forEach((e, i) => {
     if (apps[i] && apps[i]['First Name']) {
       options.push({
@@ -22,12 +61,6 @@ export default function Home({ apps }) {
     }
   })
 
-  const app = apps[currApp]
-
-  if (!app) {
-    setApp(0)
-    return <></>
-  }
 
   const QA = ({ q }) => {
     return (<><h3>{q}</h3>
@@ -189,14 +222,6 @@ export default function Home({ apps }) {
     </div>
   )
 }
-
-export async function getStaticProps(context) {
-  const apps = await import('../lib/apps.json')
-  return {
-    props: { apps: JSON.stringify(apps) },
-  }
-}
-
 
 const storage = {
   getItem(key, initialValue) {

@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "jsonify": "csv2json ./lib/apps.csv ./lib/apps.json"
   },
   "dependencies": {
+    "csv2json": "^2.0.2",
     "next": "11.1.2",
     "next-themes": "^0.0.15",
     "react": "17.0.2",
