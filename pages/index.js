@@ -8,9 +8,9 @@ export async function getStaticProps(context) {
   try {
     const apps = await require('../lib/apps.json')
 
-    if (process.env.ACTIVE !== true) {
-      return { props: { apps: JSON.stringify([]) } }
-    }
+    // if (process.env.ACTIVE !== true) {
+    //   return { props: { apps: JSON.stringify([]) } }
+    // }
   
     const array = []
     Object.entries(apps).forEach(([key, value]) => {
@@ -202,15 +202,14 @@ export default function Home({ apps }) {
             <a target="_blank" rel="noreferrer" href={app["Please upload your resume. Label the file \"Last-name First-name Resume\"."]}><button style={{width: 150}}>View Resume</button></a>
             <a target="_blank" rel="noreferrer" href={app["Please upload a recent headshot. Label the file \"Last-name First-name Headshot\"."]}><button style={{width: 150, marginLeft: 8}}>View Headshot</button></a>
             <QA q="How did you hear about Theta Tau?"/>
+            <QA q="Did you contract COVID-19 during the recruitment process (to ensure all candidates are given a fair evaluation and invite eligible candidates to a virtual event)?"/>
             <QA q="Which rush events did you attend (or which will you attend)?"/>
-            <QA q="Why do you want to join Theta Tau? (100 Words)"/>
-            <QA q="The three pillars of Theta Tau are Service, Profession, and Social. If you could plan one event for the organization related to one (or more) of these principles, what would it be? Briefly describe your event. (200 Words)" />
-            <QA q="Which of the three pillars (Service, Professionalism, or Social) do you feel is the most important to you? In other words, what aspect of the Organization do you hope to get the most out of? (200 Words)" />
+            <QA q="Why do you want to join Theta Tau? Which of the three pillars (Service, Professionalism, or Social) resonates most with you? (250 Words)"/>
+            <QA q="The three pillars of Theta Tau are Service, Professionalism, and Social. If you could plan one event for the organization related to one (or more) of these principles, what would it be? Briefly describe your event. (200 Words)" />
             <QA q="What THREE books/movies/TV shows describe you most accurately (without explaining why they describe you)." />
             <QA q="What fictional character do you feel best represents you AND why? (100 Words)" />
-            <QA q="You are traveling out west when suddenly you wake up stranded in the middle of a cornfield in Kansas. You recognize the area (you travel a lot) and remember that the closest civilization is 200 miles away, but you are nearly out of food and water. On top of that, your horse has gone missing. You stumble into a random junkyard where you collect a single strike-anywhere match, a pair of snowshoes, a mug, a parachute, a soccer ball, tweezers, an apple, a swiss army knife, two pieces of scrap wood, a mirror, and a lasso. You know that in 10 days farmers will come tend the area you are in, which means you must keep yourself alive and entertained for that amount of time. Describe which materials you would use to survive this situation. Feel free to use natural resources to help with your creations (250 Words)." />
+            <QA q="You wake up one day in a ghost town with no idea how you got there. You recognize the area as being somewhere in Montana from a game of GeoGuessr you played and realize that the closest human being is 150 miles away. Unfortunately, your pockets have been emptied and all you have is a can of spray paint. You luckily stumble upon a backpack that has a single strike-anywhere match, a potato, a thermos, an old school video camera, a tennis ball, tweezers, an apple, a swiss army knife, two pieces of scrap wood, a mirror, and a blank canvas. You know that a train is going to pass through this town in 10 days, which means you must keep yourself alive and entertained for that amount of time. Describe which materials you would use to survive this situation. Feel free to use natural resources to help with your creations (250 Words)." />
             {app["Optional: Upload a photo of your creation if you feel words can't do it justice."] && <a href={app["Optional: Upload a photo of your creation if you feel words can't do it justice."]} rel="noreferrer" target="_blank"><button style={{width: 300}}>Open image of creation</button></a>}
-            <QA q="What are you most looking forward to this upcoming school year? (100 Words)" />
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
               <button onClick={prevApp}>
                 &#171; Prev
