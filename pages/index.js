@@ -142,6 +142,7 @@ export default function Home({ apps }) {
 
   const justApps = Object.entries(apps).filter(([_, app]) => app["First Name"] !== undefined);
   const displayLength = justApps.length - 1; // because we index at 0.
+  var id = app["Please upload a recent headshot. Label the file \"Last-name First-name Headshot\". PLEASE USE A JPEG/JPG"].split('id=')[1].split('&')[0];
   return (
     <div className={styles.container}>
       <Head>
@@ -195,6 +196,9 @@ export default function Home({ apps }) {
               {app['Do you have a minor?'] === "Yes" && <span><span className={styles.info}>Minor(s):</span> <span>{app['What is your minor(s)?']} </span></span>}
               <span><span className={styles.info}>GPA:</span> <span>{app['What is your cumulative GPA?']}</span></span>
             </p>
+            <div>
+              <img src={`https://drive.google.com/thumbnail?id=${id}`} alt="image" />
+            </div>
             <a target="_blank" rel="noreferrer" href={app["Please upload your resume. Label the file \"Last-name First-name Resume\"."]}><button style={{width: 150}}>View Resume</button></a>
             <a target="_blank" rel="noreferrer" href={app["Please upload a recent headshot. Label the file \"Last-name First-name Headshot\"."]}><button style={{width: 150, marginLeft: 8}}>View Headshot</button></a>
             <QA q="How did you hear about Theta Tau?"/>
