@@ -8,9 +8,9 @@ export async function getStaticProps(context) {
   try {
     const apps = await require('../lib/apps.json')
 
-    // if (process.env.ACTIVE !== true) {
-    //   return { props: { apps: JSON.stringify([]) } }
-    // }
+    if (process.env.ACTIVE !== true) {
+      return { props: { apps: JSON.stringify([]) } }
+    }
   
     const array = []
     Object.entries(apps).forEach(([key, value]) => {
