@@ -142,7 +142,7 @@ export default function Home({ apps }) {
 
   const justApps = Object.entries(apps).filter(([_, app]) => app["First Name"] !== undefined);
   const displayLength = justApps.length - 1; // because we index at 0.
-  var id = app["Please upload a recent headshot. Label the file \"Last-name First-name Headshot\". PLEASE USE A JPEG/JPG"].split('id=')[1].split('&')[0];
+  const id = app["Please upload a recent headshot. Label the file \"Last-name First-name Headshot\". PLEASE USE A JPEG/JPG"].split('id=')[1].split('&')[0];
   return (
     <div className={styles.container}>
       <Head>
