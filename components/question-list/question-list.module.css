@@ -1,0 +1,11 @@
+.questionList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.questionList li:focus,
+.questionList li:hover {
+    outline: 1px dotted var(--foreground);
+    outline-offset: var(--gap);
+}

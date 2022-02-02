@@ -4,6 +4,11 @@
   --heading: #457397;
   --hover: darkslateblue;
   --warning: blue;
+  --gap: 8px;
+  --gap-half: 4px;
+  --gap-quarter: 2px;
+  --gap-double: 16px;
+  --gap-triple: 24px;
 }
 
 [data-theme='light'] {
@@ -35,19 +40,4 @@ h1,
 h2,
 h3 {
   color: var(--heading);
-}
-
-button {
-  color: white; 
-  background: var(--heading);
-  width: 80px;
-  height: 30px; 
-  font-size: 1em;
-  cursor: pointer;
-  border: 0.1em solid var(--heading);
-  transition: .4s;
-}
-
-button:hover {
-  background: var(--hover);
 }

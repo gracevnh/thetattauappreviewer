@@ -1,0 +1,15 @@
+.button {
+  color: white;
+  background: var(--heading);
+  min-width: 150px;
+  height: 30px;
+  font-size: 1em;
+  cursor: pointer;
+  border: 0.1em solid var(--heading);
+  /* A nice cubic-bezier hover transition */
+  transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button:hover {
+  background: var(--hover);
+}

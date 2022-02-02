@@ -33,6 +33,9 @@ yarn-error.log*
 
 # custom
 /lib/apps.json
+/lib/apps.csv
+/data/apps.csv
+/data/apps.json
 
 # vercel
 .vercel

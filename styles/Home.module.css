@@ -1,6 +1,5 @@
 .container {
   min-height: 100vh;
-  padding: 0 0.5rem;
   display: flex;
   flex-direction: column;
   background-color: var(--background);
@@ -11,11 +10,7 @@
   width: 75%;
   display: block;
   margin: 0 auto;
-  padding-bottom: 80px;
-}
-
-.logo {
-  height: 1em;
+  padding-bottom: var(--gap-double);
 }
 
 @media (max-width: 600px) {
@@ -35,28 +30,18 @@
 }
 
 .header { grid-area: header; }
-.notes { grid-area: notes; }
 .app { grid-area: app; }
 
-.info {
-  font-weight: 800;
-}
-
-.notesSticky {
-  position: sticky;
-  top: 1rem;
-}
-
-
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 900px) {
   .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: .01fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: .01fr 1fr .3fr;
     gap: 0px 0px;
     grid-template-areas:
-      "header header"
-      "app app"
-      "notes notes";
+      "header"
+      "app"
+      "notes";
   }  
 }
+

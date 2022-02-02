@@ -3,7 +3,7 @@ A basic tool for viewing theta tau apps.  Made in ~4 hours so please dont judge.
 
 ## Getting Started
 First, export the apps as CSV from the google sheet.
-Place the file in `lib` and call it `apps.csv`.
+Place the file in `data` and call it `apps.csv`.
 Then, run `yarn jsonify` to convert the file to `apps.json`.
 
 Finally, run the development server:

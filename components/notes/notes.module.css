@@ -1,0 +1,20 @@
+.notesSticky {
+  position: sticky;
+  top: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 80%;
+}
+
+.notes {
+  grid-area: notes;
+}
+
+@media only screen and (max-width: 900px) {
+    .notesSticky {
+      width: 100%;
+    }
+  }
+  
+  

@@ -1,0 +1,194 @@
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import { useState, useEffect } from "react";
+import Select from "react-select";
+import { useTheme } from "next-themes";
+import QuestionList from "../components/question-list";
+import Notes from "../components/notes";
+import useLocalStorage from "../lib/useLocalStorage";
+import ApplicantInfo from "../components/applicant-info";
+import AppNavigation from "../components/app-navigation";
+
+export async function getStaticProps() {
+  try {
+    const apps = require("../data/apps.json");
+
+    if (process.env.ACTIVE !== "true") {
+      return { props: { apps: JSON.stringify([]) } };
+    }
+
+    const array = [];
+    Object.entries(apps).forEach(([key, value]) => {
+      // If we successfully parse, we assume its a valid app.
+      const num = parseInt(key);
+      if (!isNaN(num)) array.push(value);
+    });
+
+    return {
+      props: { apps: JSON.stringify(array) },
+    };
+  } catch (e) {
+    // If no apps.json file is found
+    if (e?.code === "MODULE_NOT_FOUND") {
+      return {
+        props: { apps: JSON.stringify([]) },
+      };
+    } else {
+      throw e;
+    }
+  }
+}
+
+export default function Home({ apps }) {
+  apps = JSON.parse(apps) as App[];
+  const [currApp, setApp] = useLocalStorage("currApp", 0);
+  const [selectedOption, setSelectedOption] = useState("");
+  const { theme, setTheme } = useTheme();
+
+  const options = [];
+
+  const app = apps[currApp];
+
+  if (!app) {
+    if (typeof window !== "undefined")
+      localStorage.clear();
+    return <>nice try. try reloading the page or coming back when apps are in.</>;
+  }
+
+  Object.keys(apps).forEach((e, i) => {
+    if (apps[i] && apps[i]["First Name"]) {
+      options.push({
+        value: i,
+        label: `${apps[i]["First Name"]} ${apps[i]["Last Name"]}`,
+      });
+    }
+  });
+
+
+
+  const handleSelectChange = (selectedOption) => {
+    if (!selectedOption) {
+      return;
+    }
+    setSelectedOption(selectedOption);
+
+    setApp(selectedOption.value);
+  };
+
+  
+  const customStyles = {
+    option: (provided) => ({
+      ...provided,
+      color: "black",
+    }),
+    control: (provided) => ({
+      ...provided,
+      color: "black",
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: "black",
+    }),
+  };
+
+  const justApps = Object.entries(apps).filter(
+    ([_, app]) => app["First Name"] !== undefined
+  );
+
+  const displayLength = justApps.length - 1; // because we index at 0.
+
+  return (
+    <div className={styles.container}>
+      <Head>
+        <title>
+          Super Secret App Reviewer 2 - The Second Super Secret App Review
+        </title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main className={styles.main}>
+        <span className={styles["grid-container"]}>
+          <div className={styles.header}>
+            <div>
+              Theme:{" "}
+              {theme !== undefined && (
+                <select
+                  value={theme}
+                  onChange={(e) => setTheme(e.target.value)}
+                >
+                  <option value="dark">Dark</option>
+                  <option value="light">Light</option>
+                  <option value="system">System</option>
+                </select>
+              )}
+            </div>
+            <h1 style={{ display: "inline-block", marginRight: 110 }}>
+              Theta Tau App Review
+            </h1>
+            <span style={{ width: 250, display: "inline-block", marginBottom: "var(--gap)" }}>
+              <Select
+                value={selectedOption}
+                onChange={handleSelectChange}
+                styles={customStyles}
+                isSearchable={true}
+                options={options}
+              />{" "}
+            </span>
+          </div>
+          <Notes apps={apps} currApp={currApp} />
+          <main className={styles.app}>
+            <AppNavigation apps={justApps} currApp={currApp} setApp={setApp} />
+
+            {currApp === 0 && (
+              <p
+                style={{
+                  background: "var(--warning)",
+                  color: "white",
+                  borderRadius: 8,
+                  padding: 8,
+                }}
+              >
+                PLEASE READ: notes are per-application, stored locally, and can
+                be exported for easy viewing at delibs. please dont share this
+                site. the source code is{" "}
+                <u>
+                  <a href="https://github.com/maxLeiter/thetattauappreviewer">
+                    here
+                  </a>
+                </u>
+                .
+              </p>
+            )}
+            {currApp !== 0 && (
+              <h2>
+                {app["First Name"]} {app["Last Name"]} - app {currApp} of{" "}
+                {displayLength}
+              </h2>
+            )}
+            {currApp === 0 && (
+              <h2>
+                {app["First Name"]} {app["Last Name"]} - app{" "}
+                <abbr title="This is CS, we start at 0. Sorry for being lazy">
+                  {currApp}
+                </abbr>{" "}
+                of {displayLength}
+              </h2>
+            )}
+
+            <h3>Info</h3>
+            <ApplicantInfo app={app} />
+ 
+            <QuestionList app={app} />
+    
+
+            <AppNavigation apps={justApps} currApp={currApp} setApp={setApp} />
+          </main>
+        </span>
+      </main>
+    </div>
+  );
+}
+
+
+export type App = {
+  [key: string]: string
+}
