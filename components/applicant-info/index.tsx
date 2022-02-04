@@ -1,10 +1,10 @@
 import Image from 'next/image'
-import type { App } from "../../pages"
+import { ApplicationData } from '../../pages/[app]'
 import Button from "../button"
 import styles from './applicant-info.module.css'
 
 type Props = {
-    app: App,
+    app: ApplicationData,
 }
 
 
