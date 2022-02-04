@@ -60,33 +60,33 @@ const Application = ({ data, totalApps, namesAndIds }: Props) => {
 
     return (
         <div className={styles.container}>
-        <Head>
-          <title>
-            Super Secret App Reviewer 2 - The Second Super Secret App Review
-          </title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <main className={styles.main}>
-          <span className={styles["grid-container"]}>
-            <div className={styles.header}>
-              <ThemeSelector setTheme={setTheme} theme={theme}/>
-              <h1 style={{ display: "inline-block", marginRight: 110 }}>
-                Theta Tau App Review
-              </h1>
-              <JumpToApp currApp={currApp} namesAndIds={namesAndIds} />
-            </div>
-            <Notes namesAndIds={namesAndIds} currApp={currApp} />
-            <main className={styles.app}>
-              <AppNavigation totalApps={totalApps} currApp={currApp} />
-              <AppHeader currApp={currApp} name={`${app['First Name']} ${app['Last Name']}`} totalApps={totalApps} />
-              <h3>Info</h3>
-              <ApplicantInfo app={app} />
-              <QuestionList app={app} />
-              <AppNavigation currApp={currApp} totalApps={totalApps}/>
+            <Head>
+                <title>
+                    Super Secret App Reviewer 2 - The Second Super Secret App Review
+                </title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <main className={styles.main}>
+                <span className={styles["grid-container"]}>
+                    <div className={styles.header}>
+                        <ThemeSelector setTheme={setTheme} theme={theme} />
+                        <h1 style={{ display: "inline-block", marginRight: 110 }}>
+                            Theta Tau App Review
+                        </h1>
+                        <JumpToApp currApp={currApp} namesAndIds={namesAndIds} />
+                    </div>
+                    <Notes namesAndIds={namesAndIds} currApp={currApp} />
+                    <main className={styles.app}>
+                        <AppNavigation totalApps={totalApps} currApp={currApp} />
+                        <AppHeader currApp={currApp} name={`${app['First Name']} ${app['Last Name']}`} totalApps={totalApps} />
+                        <h3>Info</h3>
+                        <ApplicantInfo app={app} />
+                        <QuestionList app={app} />
+                        <AppNavigation currApp={currApp} totalApps={totalApps} />
+                    </main>
+                </span>
             </main>
-          </span>
-        </main>
-      </div>)
+        </div>)
 }
 
 const getAndParseApps = () => {
@@ -108,28 +108,17 @@ export async function getStaticProps(context: GetStaticPropsContext) {
         return { props: { data: JSON.stringify({}) } };
     }
 
-    try {
-        const { app: appId } = context.params
-        const parsedApps = getAndParseApps()
-        const appData = parsedApps.find(app => app.id.toString() === appId.toString())
-        const namesAndIds = parsedApps.map(app => ({
-            name: `${app["First Name"]} ${app["Last Name"]}`,
-            id: app.id
-        }))
+    const { app: appId } = context.params
+    const parsedApps = getAndParseApps()
+    const appData = parsedApps.find(app => app.id.toString() === appId.toString())
+    const namesAndIds = parsedApps.map(app => ({
+        name: `${app["First Name"]} ${app["Last Name"]}`,
+        id: app.id
+    }))
 
-        return {
-            props: { data: JSON.stringify(appData), totalApps: parsedApps.length, namesAndIds },
-        };
-    } catch (e) {
-        // If no apps.json file is found
-        if (e?.code === "MODULE_NOT_FOUND") {
-            return {
-                props: { data: JSON.stringify({}) },
-            };
-        } else {
-            throw e;
-        }
-    }
+    return {
+        props: { data: JSON.stringify(appData), totalApps: parsedApps.length, namesAndIds },
+    };
 }
 
 export async function getStaticPaths() {
@@ -137,7 +126,7 @@ export async function getStaticPaths() {
     const paths = apps.map((app) => {
         return { params: { app: app.id.toString() } }
     })
-    
+
     return {
         paths,
         fallback: false // false or 'blocking'
