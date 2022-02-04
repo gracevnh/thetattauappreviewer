@@ -1,13 +1,17 @@
 import useLocalStorage from '../../lib/useLocalStorage';
+import { ApplicationData } from '../../pages/[app]';
 import Button from '../button'
 import styles from './notes.module.css'
 
 type Props = {
-    apps: Object[],
-    currApp: number,
+    namesAndIds: {
+        name: string,
+        id: number
+    }[],
+    currApp: number
 }
 
-const Notes = ({ apps, currApp }: Props) => {
+const Notes = ({ namesAndIds, currApp }: Props) => {
     const year = new Date().getFullYear();
     const [note, setNote] = useLocalStorage(`note-${currApp}-${year}`, "");
 
@@ -19,11 +23,10 @@ const Notes = ({ apps, currApp }: Props) => {
     const exportNotes = () => {
         const list = [];
         list.push(["Name", "Note"]);
-        for (let i = 0; i < apps.length; i++) {
-            const note = localStorage.getItem(`note-${i}`);
-
+        for (const { name, id } of namesAndIds) {
+            const note = localStorage.getItem(`note-${id}-${year}`);
             if (note) {
-                list.push([apps[i]["First Name"] + " " + apps[i]["Last Name"], note]);
+                list.push([name, note]);
             }
         }
 

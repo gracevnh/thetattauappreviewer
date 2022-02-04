@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import { useState, useEffect } from "react";
 import Select from "react-select";
 import { useTheme } from "next-themes";
@@ -176,10 +175,7 @@ export default function Home({ apps }) {
 
             <h3>Info</h3>
             <ApplicantInfo app={app} />
- 
             <QuestionList app={app} />
-    
-
             <AppNavigation apps={justApps} currApp={currApp} setApp={setApp} />
           </main>
         </span>

@@ -1,30 +1,29 @@
+import { useRouter } from "next/router";
 import Button from "../button";
 
 type Props = {
-    apps: Object[],
     currApp: number,
-    setApp: (app: number) => void,
+    totalApps: number
 }
 
-const AppNavigation = ({ apps, currApp, setApp }: Props) => {
+const AppNavigation = ({ currApp, totalApps }: Props) => {
+    const { push, } = useRouter();
     const nextApp = () => {
-        if (currApp === apps.length - 1) {
-            localStorage.setItem("currApp", "0");
-            setApp(0);
+        if (currApp === totalApps - 1) {
+            push("/0")
             return;
+        } else {
+            push(`/${currApp + 1}`)
         }
-        localStorage.setItem("currApp", (currApp + 1).toString());
-        setApp(currApp + 1);
     };
 
     const prevApp = () => {
         if (currApp === 0) {
-            localStorage.setItem("currApp", (apps.length - 1).toString());
-            setApp(apps.length - 1);
+            push(`/${totalApps - 1}`)
             return;
+        } else {
+            push(`/${currApp - 1}`)
         }
-        localStorage.setItem("currApp", (currApp - 1).toString());
-        setApp(currApp - 1);
     };
 
     return (
