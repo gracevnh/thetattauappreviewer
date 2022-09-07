@@ -14,7 +14,7 @@ const ApplicantInfo = ({ app }) => {
     ]
         .split("id=")[1]
         .split("&")[0];
-
+    
     return (
         <>
             <p style={{ display: "flex", flexDirection: "column" }}>
@@ -53,7 +53,8 @@ const ApplicantInfo = ({ app }) => {
                 >
                     <Image
                         src={`https://drive.google.com/thumbnail?id=${photoId}`}
-                        alt={`headshot of ${app["First Name"]} ${app["Last Name"]}`}
+                        alt={`${photoId}`}
+                        // alt={`headshot of ${app["First Name"]} ${app["Last Name"]}`}
                         layout="fill"
                         objectFit="contain"
                         quality={100}
