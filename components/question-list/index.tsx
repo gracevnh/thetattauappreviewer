@@ -8,13 +8,13 @@ type Props = {
 
 const questions = [
     "How did you hear about Theta Tau?",
-    "Did you contract COVID-19 during the recruitment process (to ensure all candidates are given a fair evaluation and invite eligible candidates to a virtual event)?",
     "Which rush events did you attend (or which will you attend)?",
-    "Why do you want to join Theta Tau? Which of the three pillars (Service, Professionalism, or Social) resonates most with you? (250 Words)",
+    "Why do you want to join Theta Tau? (100 Words)",
     "The three pillars of Theta Tau are Service, Professionalism, and Social. If you could plan one event for the organization related to one (or more) of these principles, what would it be? Briefly describe your event. (200 Words)",
+    "Which of the three pillars (Service, Professionalism, or Social) do you feel is the most important to you? In other words, what aspect of the Organization do you hope to get the most out of? (200 Words)",
     "What THREE books/movies/TV shows describe you most accurately (without explaining why they describe you).",
     "What fictional character do you feel best represents you AND why? (100 Words)",
-    "You wake up one day in a ghost town with no idea how you got there. You recognize the area as being somewhere in Montana from a game of GeoGuessr you played and realize that the closest human being is 150 miles away. Unfortunately, your pockets have been emptied and all you have is a can of spray paint. You luckily stumble upon a backpack that has a single strike-anywhere match, a potato, a thermos, an old school video camera, a tennis ball, tweezers, an apple, a swiss army knife, two pieces of scrap wood, a mirror, and a blank canvas. You know that a train is going to pass through this town in 10 days, which means you must keep yourself alive and entertained for that amount of time. Describe which materials you would use to survive this situation. Feel free to use natural resources to help with your creations (250 Words)."
+    "You are traveling out west when suddenly you wake up stranded in the middle of a cornfield in Idaho. You recognize the area (you travel a lot) and remember that the closest civilization is 200 miles away, but you are nearly out of food and water. On top of that, your donkey has gone missing. You stumble into a random junkyard where you collect a single pencil, a pair of tennis balls, a porcelain cup, an egg, a basket of letter sized papers, an apple, a swiss army knife, two pieces of scrap wood, a mirror, and a lasso. You know that in 10 days farmers will come tend the area you are in, which means you must keep yourself alive and entertained for that amount of time. Describe which materials you would use to survive this situation. Feel free to use natural resources to help with your creations (250 Words)."
 ]
 
 const QuestionList = ({ app }: Props) => {
