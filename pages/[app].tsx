@@ -30,16 +30,17 @@ export interface ApplicationData {
     "What is your minor(s)?": string;
     "What is your cumulative GPA?": string;
     "How did you hear about Theta Tau?": string;
-    "Did you contract COVID-19 during the recruitment process (to ensure all candidates are given a fair evaluation and invite eligible candidates to a virtual event)?": string;
     "Which rush events did you attend (or which will you attend)?": string;
     "Please upload your resume. Label the file \"Last-name First-name Resume\".": string;
-    "Please upload a recent headshot. Label the file \"Last-name First-name Headshot\". PLEASE USE A JPEG/JPG": string;
-    "Why do you want to join Theta Tau? Which of the three pillars (Service, Professionalism, or Social) resonates most with you? (250 Words)": string;
+    "Please upload a recent headshot. Label the file \"Last-name First-name Headshot\". (Please .jpeg and .png ONLY)": string;
+    "Why do you want to join Theta Tau? (100 Words)": string;
     "The three pillars of Theta Tau are Service, Professionalism, and Social. If you could plan one event for the organization related to one (or more) of these principles, what would it be? Briefly describe your event. (200 Words)": string;
+    "Which of the three pillars (Service, Professionalism, or Social) do you feel is the most important to you? In other words, what aspect of the Organization do you hope to get the most out of? (200 Words)": string;
     "What THREE books/movies/TV shows describe you most accurately (without explaining why they describe you).": string;
     "What fictional character do you feel best represents you AND why? (100 Words)": string;
-    "You wake up one day in a ghost town with no idea how you got there. You recognize the area as being somewhere in Montana from a game of GeoGuessr you played and realize that the closest human being is 150 miles away. Unfortunately, your pockets have been emptied and all you have is a can of spray paint. You luckily stumble upon a backpack that has a single strike-anywhere match, a potato, a thermos, an old school video camera, a tennis ball, tweezers, an apple, a swiss army knife, two pieces of scrap wood, a mirror, and a blank canvas. You know that a train is going to pass through this town in 10 days, which means you must keep yourself alive and entertained for that amount of time. Describe which materials you would use to survive this situation. Feel free to use natural resources to help with your creations (250 Words).": string;
+    "You are traveling out west when suddenly you wake up stranded in the middle of a cornfield in Idaho. You recognize the area (you travel a lot) and remember that the closest civilization is 200 miles away, but you are nearly out of food and water. On top of that, your donkey has gone missing. You stumble into a random junkyard where you collect a single pencil, a pair of tennis balls, a porcelain cup, an egg, a basket of letter sized papers, an apple, a swiss army knife, two pieces of scrap wood, a mirror, and a lasso. You know that in 10 days farmers will come tend the area you are in, which means you must keep yourself alive and entertained for that amount of time. Describe which materials you would use to survive this situation. Feel free to use natural resources to help with your creations (250 Words).": string;
     "Optional: Upload a photo of your creation if you feel words can't do it justice.": string;
+    "What are you most looking forward to this upcoming school year? (100 Words)": string;
     id: number; // added in getAndParseApps
 }
 
@@ -87,7 +88,7 @@ const Application = ({ data, totalApps, namesAndIds }: Props) => {
                 </span>
             </main>
         </div>)
-}
+} 
 
 const getAndParseApps = () => {
     const apps = require("../data/apps.json") as any[];

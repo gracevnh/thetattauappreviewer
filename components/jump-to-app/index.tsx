@@ -24,6 +24,7 @@ const JumpToApp = ({ namesAndIds, currApp }: {
     }[],
     currApp: number
 }) => {
+    console.log(namesAndIds)
     const { push } = useRouter()
     const selectOptions = namesAndIds.map(({ name, id }) => ({
         value: id,

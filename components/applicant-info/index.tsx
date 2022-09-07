@@ -10,7 +10,7 @@ type Props = {
 
 const ApplicantInfo = ({ app }) => {
     const photoId = app[
-        'Please upload a recent headshot. Label the file "Last-name First-name Headshot". PLEASE USE A JPEG/JPG'
+        'Please upload a recent headshot. Label the file "Last-name First-name Headshot". (Please .jpeg and .png ONLY)'
     ]
         .split("id=")[1]
         .split("&")[0];
