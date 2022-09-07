@@ -52,7 +52,7 @@ const ApplicantInfo = ({ app }) => {
                     }}
                 >
                     <Image
-                        src={`https://drive.google.com/file/d/${photoId}/view`}
+                        src={`https://drive.google.com/thumbnail?id=${photoId}`}
                         alt={`headshot of ${app["First Name"]} ${app["Last Name"]}`}
                         layout="fill"
                         objectFit="contain"
