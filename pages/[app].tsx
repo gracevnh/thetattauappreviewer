@@ -32,7 +32,7 @@ export interface ApplicationData {
     "How did you hear about Theta Tau?": string;
     "Which rush events did you attend (or which will you attend)?": string;
     "Please upload your resume. Label the file \"Last-name First-name Resume\".": string;
-    "Please upload a recent headshot. Label the file \"Last-name First-name Headshot\". (Please .jpeg and .png ONLY)": string;
+    "Please upload a recent headshot. Label the file \"Last-name First-name Headshot\"." (Please .jpeg and .png ONLY)": string;
     "Why do you want to join Theta Tau? (100 Words)": string;
     "The three pillars of Theta Tau are Service, Profession, and Social. If you could plan one event for the organization related to one (or more) of these principles, what would it be? Briefly describe your event. (200 Words)": string;
     "Which of the three pillars (Service, Professionalism, or Social) do you feel is the most important to you? In other words, what aspect of the Organization do you hope to get the most out of? (200 Words)": string;
