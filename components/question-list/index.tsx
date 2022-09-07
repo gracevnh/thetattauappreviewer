@@ -10,7 +10,7 @@ const questions = [
     "How did you hear about Theta Tau?",
     "Which rush events did you attend (or which will you attend)?",
     "Why do you want to join Theta Tau? (100 Words)",
-    "The three pillars of Theta Tau are Service, Professionalism, and Social. If you could plan one event for the organization related to one (or more) of these principles, what would it be? Briefly describe your event. (200 Words)",
+    "The three pillars of Theta Tau are Service, Profession, and Social. If you could plan one event for the organization related to one (or more) of these principles, what would it be? Briefly describe your event. (200 Words)",
     "Which of the three pillars (Service, Professionalism, or Social) do you feel is the most important to you? In other words, what aspect of the Organization do you hope to get the most out of? (200 Words)",
     "What THREE books/movies/TV shows describe you most accurately (without explaining why they describe you).",
     "What fictional character do you feel best represents you AND why? (100 Words)",
